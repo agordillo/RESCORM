@@ -10,21 +10,20 @@
     <script type="text/javascript" src="/vendors/scorm_iframe_api.js"></script>   
  </head>
 <body>
-<script type="text/javascript" src="bundle.js"></script>
 <script type="text/javascript">
 	//SCORM URL
 	var scormpackageURL = "/index.html";
 	var scormResourceURLs = [scormpackageURL];
 
 	// Create LMS API
-	var API = new Local_API_SCORM_12({debug: false});
+	var API = new Local_API_SCORM_12({debug: true});
 
 	//Create SCORM player
-	var SCORM_Player = new SCORM_Player({debug: false, SCORM_VERSION: "1.2", LMS_API: API, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
+	var SCORM_Player = new SCORM_Player({debug: true, SCORM_VERSION: "1.2", LMS_API: API, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
 
 	SCORM_Player.loadScormContent(function(){
-		// Scorm content loaded
-		alert("Loaded")
+		// SCORM content loaded
+		console.log("SCORM content succesfully loaded");
 	});
 </script>
 </body>

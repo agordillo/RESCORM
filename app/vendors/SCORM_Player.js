@@ -1,6 +1,7 @@
 /*
  * SCORM Player
- * @version 1.0
+ * Requires JQuery
+ * @version 1.2
  */
 
 function SCORM_Player(options){
@@ -121,7 +122,6 @@ function SCORM_Player(options){
 			//Already loaded
 			return;
 		}
-
 		var iframe = $('<iframe id="scormcontent" style="width:100%; height:100%; border: none" webkitAllowFullScreen="true" allowfullscreen="true" mozallowfullscreen="true"></iframe>');
 		if(settings.NAVBAR === true){
 			$(iframe).css("height","94%");
@@ -131,7 +131,7 @@ function SCORM_Player(options){
 		}
 		$("body").prepend(iframe);
 		
-		loadCurrentLo();
+		loadCurrentLo(callback);
 	};
 
 	function loadCurrentLo(callback){
