@@ -16,6 +16,7 @@ export default class Header extends React.Component {
     return (
       <div>
         <h1 id="heading">SCORM Application React Boilerplate</h1>
+        <p id="tracking">Progress Measure: {this.props.tracking.progress_measure*100}% &nbsp;&nbsp;&nbsp; Score: {this.props.tracking.score*100}%</p>
         {loggedEl}
       </div>
     );

@@ -17,27 +17,36 @@ function trackingReducer(state = {}, action) {
     if(typeof objective == "undefined"){
       return state; //Objective not found
     }
-    if(objective.accomplished != false){
-      return state; //Objective has been already processed
-    }
-
-    newState = JSON.parse(JSON.stringify(state));
-    objective = Object.assign({},objective);
-    objective.accomplished = true;
- 
+    
     let updateProgress = (typeof objective.progress_measure == "number");
     if(updateProgress){
       objective.progress_measure = Math.max(0,Math.min(1,objective.progress_measure));
-      newState.progress_measure = Math.max(0,Math.min(1,newState.progress_measure + objective.progress_measure));
     }
 
     let updateScore = ((typeof objective.score == "number")&&(typeof action.accomplished_score == "number"));
     if(updateScore){
       objective.accomplished_score = Math.max(0,Math.min(Math.max(0,Math.min(1,objective.score)),action.accomplished_score));
-      newState.score = Math.max(0,Math.min(1,newState.score + objective.accomplished_score));
     }
 
+    objective.accomplished = true;
+
+    newState = JSON.parse(JSON.stringify(state));
+    objective = Object.assign({},objective);
     newState.objectives[action.objective_id] = objective;
+
+    //Calculate overall progress measure and score
+    newState.progress_measure = 0;
+    newState.score = 0;
+    var objectivesIds = Object.keys(newState.objectives);
+    for(let i=0; i<objectivesIds.length; i++){
+      if(typeof newState.objectives[objectivesIds[i]].progress_measure == "number"){
+        newState.progress_measure += newState.objectives[objectivesIds[i]].progress_measure;
+      }
+      if(typeof newState.objectives[objectivesIds[i]].accomplished_score == "number"){
+        newState.score += newState.objectives[objectivesIds[i]].accomplished_score;
+      }
+    }
+
     return newState;
   default:
     return state;

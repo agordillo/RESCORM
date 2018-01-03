@@ -394,7 +394,7 @@ function SCORM_Player(options){
 
 	function adaptContentWrapper(){
 		var contentWrappers = $("html,body");
-		$(contentWrappers).attr("style","margin: 0px !important; padding: 0px !important; overflow: hidden !important");
+		$(contentWrappers).attr("style","margin: 0px !important; padding: 0px !important; overflow: hidden !important; height:100%");
 	};
 
 	function adaptContent(){
