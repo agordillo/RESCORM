@@ -73,7 +73,7 @@ function Local_API_SCORM_12(options){
                 location:              "",
                 lesson_location:       "",
                 max_time_allowed:      "", // PT26.4S for 26.4 Seconds
-                mode:                  "normal",
+                lesson_mode:           "normal",
                 objectives:            {
                     _children: "id,score,lesson_status,description",
                     _count:    "0"

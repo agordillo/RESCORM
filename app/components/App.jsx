@@ -1,23 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './../assets/scss/main.scss';
 
 import SCORM from './SCORM.jsx';
+import Header from './Header.jsx';
 import Quiz from './Quiz.jsx';
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {user: {name: "Unknown"}};
   }
   render(){
     return (
       <div>
-        <SCORM
-        setAppState={(newState) => this.setState(newState)}
-        />
-        <h2 id="heading">Hello {this.state.user.name}</h2>
+        <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} scorm={this.props.scorm}/>
+        <Header user_profile={this.props.user_profile}/>
         <Quiz/>
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+  return state;
+}
+
+export default connect(mapStateToProps)(App);
