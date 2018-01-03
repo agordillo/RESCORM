@@ -54,4 +54,4 @@ Ofrece las siguientes funcionalidades:
 - [x] Production Config
 - [x] Custom Babel Preset with Decorators, Class Properties, Rest/Spread operator support
 - [x] Export Separate Vendor Files
-- [ ] Redux
+- [x] Redux

@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SCORM Application React Boilerplate - SCORM 2004</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="/vendors/Local_API_1484_11.js"></script>
-    <script type="text/javascript" src="/vendors/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="/vendors/SCORM_Player.js"></script>
-    <script type="text/javascript" src="/vendors/scorm_iframe_api.js"></script>   
+  <meta charset="UTF-8">
+  <title>SCORM Application React Boilerplate - SCORM 2004</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="/vendors/Local_API_1484_11.js"></script>
+  <script type="text/javascript" src="/vendors/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/vendors/SCORM_Player.js"></script>
+  <script type="text/javascript" src="/vendors/scorm_iframe_api.js"></script> 
  </head>
 <body>
-<script type="text/javascript">
-	//SCORM URL
-	var scormpackageURL = "/index.html";
-	var scormResourceURLs = [scormpackageURL];
+  <script type="text/javascript">
+    //SCORM URL
+    var scormpackageURL = "/index.html";
+    var scormResourceURLs = [scormpackageURL];
 
-	// Create LMS API
-	var API_1484_11 = new Local_API_1484_11({debug: true});
+    // Create LMS API
+    var API_1484_11 = new Local_API_1484_11({debug: true});
 
-	//Create SCORM player
-	var SCORM_Player = new SCORM_Player({debug: true, SCORM_VERSION: "2004", LMS_API: API_1484_11, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
+    //Create SCORM player
+    var SCORM_Player = new SCORM_Player({debug: true, SCORM_VERSION: "2004", LMS_API: API_1484_11, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
 
-	SCORM_Player.loadScormContent(function(){
-		// SCORM content loaded
-		console.log("SCORM content succesfully loaded");
-	});
-</script>
+    SCORM_Player.loadScormContent(function(){
+      // SCORM content loaded
+      console.log("SCORM content succesfully loaded");
+    });
+  </script>
 </body>
 </html>

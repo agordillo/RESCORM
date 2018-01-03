@@ -13,9 +13,9 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} scorm={this.props.scorm}/>
+        <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking}/>
         <Header user_profile={this.props.user_profile}/>
-        <Quiz/>
+        <Quiz dispatch={this.props.dispatch} tracking={this.props.tracking}/>
       </div>
     );
   }

@@ -1,16 +1,7 @@
-import React from 'react';
 import SCORM_API from '../vendors/SCORM_API.js';
 
-//Constants
-const hasScore = true;
-const COMPLETION_THRESHOLD = 0; //Force attempt completion
-const COMPLETION_ATTEMPT_THRESHOLD = 0;
-const SCORE_THRESHOLD = 0.5;
-
-//SCORM API instance
+//SCORM Wrapper instance
 var scorm;
-//Vars
-var objectives;
 
 export function init(debug=true,windowDebug=false){
   scorm = new SCORM_API({debug: debug, windowDebug: windowDebug, exit_type: ""});
@@ -60,7 +51,7 @@ export function updateProgressMeasure(progressMeasure){
   }
 }
 
-export function updateCompletionStatus(progressMeasure){
+export function updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD=0,COMPLETION_ATTEMPT_THRESHOLD=0){
   if(typeof progressMeasure != "number"){
     progressMeasure = 0;
   }
@@ -87,7 +78,7 @@ export function updateScore(score){
   }
 }
 
-export function updateSuccessStatus(score){
+export function updateSuccessStatus(score,SCORE_THRESHOLD=0.5){
   var successStatus;
   if(typeof score != "number"){
     successStatus = "unknown";
@@ -108,8 +99,7 @@ export function commit(){
   return scorm.commit();
 }
 
-export function onExit(progressMeasure){
-  this.updateProgressMeasure(progressMeasure);
+export function onExit(){
   // scorm.commit(); terminate will call commit
   scorm.terminate();
 }

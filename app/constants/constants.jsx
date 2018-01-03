@@ -1,8 +1,8 @@
 export const INITIAL_STATE = {
     tracking: {
-        score: 0,
+        score: null,
         progress_measure: 0,
-        objectives: []
+        objectives: {}
     },
     scorm: null,
     user_profile: {

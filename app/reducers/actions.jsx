@@ -12,9 +12,17 @@ export function updateUserProfile(user_profile){
   };
 }
 
-export function objectiveAccomplished(objective){
+export function addObjectives(objectives){
+  return{
+    type: 'ADD_OBJECTIVES',
+    objectives: objectives
+  };
+}
+
+export function objectiveAccomplished(objectiveId,accomplishedScore=null){
   return{
     type: 'OBJECTIVE_ACCOMPLISHED',
-    objective: objective
+    objective_id: objectiveId,
+    accomplished_score: accomplishedScore
   };
 }
