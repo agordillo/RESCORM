@@ -661,10 +661,13 @@ export default function SCORM_API(options){
     if (API.isActive) {// it has initialized
       // This is switch cased to appropriately translate SCORM 2004 to 1.2 if needed.
       // Handy if you don't want to go through all your content calls...
+      // console.log("API Wrapper called with key " + n);
       switch (API.version) {
       case "1.2":
-        switch (n) {
-        // SCORM 1.2 is just a comments string with a max char limit of 4096
+        switch(n){
+        case undefined:
+          ig = true;
+          break;
         case "cmi.comments_from_lms._count":
         case "cmi.comments_from_learner._count":
           ig = true;
@@ -715,17 +718,23 @@ export default function SCORM_API(options){
         case "cmi.time_limit_action":
           nn = "cmi.student_data.time_limit_action";
           break;
-        case "cmi.learner_preferences.audio_level":
-          nn = "cmi.student_preferences.audio";
+        case "cmi.learner_preference._children":
+          nn = "cmi.core.student_preference._children";
           break;
-        case "cmi.learner_preferences.delivery_speed":
-          nn = "cmi.student_preferences.speed";
+        case "cmi.learner_preference.audio_level":
+          nn = "cmi.core.student_preference.audio";
           break;
-        case "cmi.learner_preferences.language":
-          nn = "cmi.student_preferences.language";
+        case "cmi.learner_preference.delivery_speed":
+          nn = "cmi.core.student_preference.speed";
           break;
-        case "cmi.learner_preferences.audio_captioning":
-          nn = "cmi.student_preferences.text";
+        case "cmi.learner_preference.language":
+          nn = "cmi.core.student_preference.language";
+          break;
+        case "cmi.learner_preference.audio_captioning":
+          nn = "cmi.core.student_preference.text";
+          break;
+        case (n.match(/cmi.learner_preference./) || {}).input:
+          nn = n.replace("cmi.learner_preference.","cmi.core.student_preference.");
           break;
         case "cmi.success_status":
         case "cmi.completion_status":
@@ -734,7 +743,6 @@ export default function SCORM_API(options){
         case "cmi.session_time":
           nn = "cmi.core.session_time";
           break;
-          // Possibly need more here, review further later.
         case "cmi.suspend_data":
           nn = n;
           break;
@@ -742,10 +750,13 @@ export default function SCORM_API(options){
           nn = n;
           break;
         }
-        if (ig) {
+        if(ig){
           return 'false';
         }
+        
+        // console.log("API Wrapper calles SCORM 1.2 with key " + nn);
         v = lms.LMSGetValue(nn);
+        // console.log("SCORM 1.2 API responded with value " + v);
         break;
       case "2004":
         v = lms.GetValue(n);
@@ -768,11 +779,51 @@ export default function SCORM_API(options){
           'diagnostic': d
         }
       });
-      if (ec === 0 || ec === 403) {
+      if(ec === 0 || ec === 403){
         // Clean up differences in LMS responses
         if (v === 'undefined' || v === null || v === 'null') { // was typeof v
           v = "";
+        } else {
+          //Adapt returned values from SCORM 1.2 to SCORM 2004
+          if(API.version==="1.2"){
+            switch(n){
+              case "cmi.learner_preference._children":
+                var childrens = v.split(",");
+                for(var i=0; i<childrens.length; i++){
+                  switch(childrens[i]){
+                    case "audio":
+                      childrens[i] = "audio_level";
+                      break;
+                    case "speed":
+                      childrens[i] = "delivery_speed";
+                      break;
+                    case "text":
+                      childrens[i] = "audio_captioning";
+                      break;
+                    default:
+                      break;
+                  }
+                }
+                v = childrens.join(",");
+                break;
+              case "cmi.learner_preference.audio_level":
+                //TODO
+                break;
+              case "cmi.learner_preference.delivery_speed":
+                //TODO
+                break;
+              case "cmi.learner_preference.language":
+                //TODO
+                break;
+              case "cmi.learner_preference.audio_captioning":
+                //TODO
+                break;
+              default:
+                break;
+            }
+          }
         }
+
         return String(v);
       }
       debug("Error\nError Code: " + ec + "\nError Message: " + m + "\nDiagnostic: " + d, 1);
@@ -839,7 +890,7 @@ export default function SCORM_API(options){
             break;
           case "cmi.success_status":
             if((API.data.completion_status == "completed")&&(v != "passed")){
-              //When cmi.core.lesson_status is "completed", only allow the LO to chage it to "passed"
+              //When cmi.core.lesson_status is "completed", only allow the LO to change it to "passed"
               return 'false';
             }
           case "cmi.completion_status":
@@ -854,17 +905,17 @@ export default function SCORM_API(options){
           case "cmi.scaled_passing_score":
             nn = "cmi.student_data.mastery_score";
             break;
-          case "cmi.learner_preferences.audio_level":
-            nn = "cmi.student_preferences.audio";
+          case "cmi.learner_preference.audio_level":
+            nn = "cmi.core.student_preference.audio";
             break;
-          case "cmi.learner_preferences.delivery_speed":
-            nn = "cmi.student_preferences.speed";
+          case "cmi.learner_preference.delivery_speed":
+            nn = "cmi.core.student_preference.speed";
             break;
-          case "cmi.learner_preferences.language":
-            nn = "cmi.student_preferences.language";
+          case "cmi.learner_preference.language":
+            nn = "cmi.core.student_preference.language";
             break;
-          case "cmi.learner_preferences.audio_captioning":
-            nn = "cmi.student_preferences.text";
+          case "cmi.learner_preference.audio_captioning":
+            nn = "cmi.core.student_preference.text";
             break;
           case "cmi.session_time":
             nn = "cmi.core.session_time";
@@ -887,7 +938,7 @@ export default function SCORM_API(options){
             return 'false';
           }
           debug("SCORM 1.2 LMS SetValue with n: " + nn + " and v: " + v, 3);
-          s = lms.LMSSetValue(nn, v); //makeBoolean(lms.LMSSetValue(nn, v));
+          s = lms.LMSSetValue(nn, v);
         } else {
           debug("Warning, you are not in normal mode.  Ignoring 'set' requests.", 2);
           return 'false';
@@ -903,16 +954,13 @@ export default function SCORM_API(options){
             }
             break;
           case "cmi.completion_status":
-            API.data.completion_status = v;
-            // set local status
+            API.data.completion_status = v; // set local status
             break;
           case "cmi.success_status":
-            API.data.success_status = v;
-            // set local status
+            API.data.success_status = v; // set local status
             break;
           case "cmi.exit":
-            API.data.exit_type = v;
-            // set local status
+            API.data.exit_type = v; // set local status
             break;
           case "suspend_data":
             if (v.length > 64000) {
@@ -924,7 +972,7 @@ export default function SCORM_API(options){
             break;
           }
           debug("SCORM 2004 LMS SetValue with n: " + n + " and v: " + v, 3);
-          s = lms.SetValue(n, v); //makeBoolean(lms.SetValue(n, v));
+          s = lms.SetValue(n, v);
         } else {
           debug("Warning, you are not in normal mode.  Ignoring 'set' requests.", 2);
           return 'false';
@@ -978,11 +1026,11 @@ export default function SCORM_API(options){
       switch (API.version) {
       case "1.2":
         self.setvalue("cmi.core.session_time", centisecsToSCORM12Duration(session_secs * 100));
-        s = lms.LMSCommit(""); //makeBoolean(lms.LMSCommit(""));
+        s = lms.LMSCommit("");
         break;
       case "2004":
         self.setvalue("cmi.session_time", centisecsToISODuration(session_secs * 100, true));
-        s = lms.Commit(""); //makeBoolean(lms.Commit(""));
+        s = lms.Commit("");
         break;
       default:
         // handle non-LMS?
@@ -1073,10 +1121,10 @@ export default function SCORM_API(options){
         self.commit(); // Store Data before Terminating
         switch (API.version) {
         case "1.2":
-          s = lms.LMSFinish(""); //makeBoolean(lms.LMSFinish(""));
+          s = lms.LMSFinish("");
           break;
         case "2004":
-          s = lms.Terminate(""); //makeBoolean(lms.Terminate(""));
+          s = lms.Terminate("");
           break;
         default:
           // handle non-LMS?

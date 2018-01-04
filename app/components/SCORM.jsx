@@ -38,6 +38,8 @@ export default class SCORM extends React.Component {
     
     //Init user profile
     var user = SCORM_WRAPPER.getUserProfile();
+    // console.log("USER PROFILE");
+    // console.log(user);
     this.props.dispatch(updateUserProfile(user));
 
     //Send initial progress measure

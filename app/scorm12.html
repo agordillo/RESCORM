@@ -16,7 +16,7 @@
     var scormResourceURLs = [scormpackageURL];
 
     // Create LMS API
-    var API = new Local_API_SCORM_12({debug: true});
+    var API = new Local_API_SCORM_12({debug: true, CMI:{core: {student_preference:{_children:"audio,language,speed,text,difficulty",difficulty:"5"}}}});
 
     //Create SCORM player
     var SCORM_Player = new SCORM_Player({debug: true, SCORM_VERSION: "1.2", LMS_API: API, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
