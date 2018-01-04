@@ -8,21 +8,21 @@
       * Internet connection 
 1. Install [node.js](https://nodejs.org/es/download/) and [git](https://git-scm.com/downloads).
 2. Open a new terminal, go to your working directory and clone this GitHub poject:
-```bash
-git clone https://github.com/agordillo/scormapp-react-boilerplate
-```
+    ```bash
+    git clone https://github.com/agordillo/scormapp-react-boilerplate
+    ```
 3. Go to the 'scormapp-react-boilerplate' folder that has been created.
 4. Execute the following command to install all the project dependencies in the 'node_modules' folder:
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 4. Execute the following command to start the development server:
-```bash
-npm start
-```
-The app will be available at the following URL [http://localhost:8080](http://localhost:8080).  
-SCORM 1.2 environment will be available at [http://localhost:8080/scorm12.html](http://localhost:8080/scorm12.html).  
-SCORM 2004 environment will be available at [http://localhost:8080/scorm2004.html](http://localhost:8080/scorm2004.html).
+    ```bash
+    npm start
+    ```
+    The app will be available at the following URL [http://localhost:8080](http://localhost:8080).  
+    SCORM 1.2 environment will be available at [http://localhost:8080/scorm12.html](http://localhost:8080/scorm12.html).  
+    SCORM 2004 environment will be available at [http://localhost:8080/scorm2004.html](http://localhost:8080/scorm2004.html).
 
 5. Development server can be stopped by pressing 'Ctrl-C'.
 
