@@ -1,5 +1,4 @@
 const { resolve } = require('path');
-
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -105,7 +104,7 @@ const config = {
     }),*/
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' }),
+    new OpenBrowserPlugin({ url: 'http://localhost:8080/scorm2004.html' }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };

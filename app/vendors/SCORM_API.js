@@ -25,7 +25,7 @@
  * var scorm = new SCORM_API({debug: true, exit_type: 'suspend'}),
  * lmsconnected = scorm.initialize();
  * scorm.getvalue('cmi.location');
- * scorm.setvalue('cmi.location', '4');
+ * scorm.setvalue('cmi.location','4');
  * scorm.commit();
  * scorm.terminate();
  *
@@ -807,23 +807,41 @@ export default function SCORM_API(options){
                 v = childrens.join(",");
                 break;
               case "cmi.learner_preference.audio_level":
-                //TODO
+                //SCORM 1.2: cmi.learner_preference.audio, -1 to 100 (-1 is off, 0 is a no-change status, 1-100 is volume level)
+                //SCORM 2004: cmi.learner_preference.audio_level, >0 (0 is off, 0-1 attenuation, 1 no-change, >1 amplification).
+                v = parseInt(v);
+                if(v<0){
+                  //Off
+                  v = 0;
+                } else if(v===0){
+                  //No change
+                  v = 1;
+                } else {
+                  //1<v<100
+                  v = (Math.min(100,v)-1)/49; // vSCORM1.2=1 => v=0, vSCORM1.2=50 => v=1, vSCORM1.2=100 => v will be aproximately 2
+                }
                 break;
               case "cmi.learner_preference.delivery_speed":
-                //TODO
+                //SCORM 1.2: cmi.student_preference.speed, -100 to 100 (-100 is the slowest pace available in the system, 0 is no-change status, 100 is maximum pace available in the system)
+                //SCORM 2004: cmi.learner_preference.delivery_speed, >0 (1 no-change, <1 slower than reference speed, >1 faster than reference speed).
+                v = parseInt(v);
+                v = (Math.max(Math.min(100,v),-100)/100)+1; // vSCORM1.2=-100 => v=0, vSCORM1.2=0 => v=1, vSCORM1.2=100 => v=2
                 break;
               case "cmi.learner_preference.language":
-                //TODO
+                //SCORM 1.2: cmi.student_preference.language, Format: Alphabetic string, may include white space. It is the responsibility of the SCO to set this value.
+                //SCORM 2004: cmi.learner_preference.language, Value Space: ISO-646.
+                //No action required.
                 break;
               case "cmi.learner_preference.audio_captioning":
-                //TODO
+                //SCORM 1.2: cmi.student_preference.text, (-1: text is off, 0: no-change status, 1: text is on)
+                //SCORM 2004: cmi.learner_preference.audio_captioning, (-1: off state, 0: no-change state, 1: on state)
+                //No action required.
                 break;
               default:
                 break;
             }
           }
         }
-
         return String(v);
       }
       debug("Error\nError Code: " + ec + "\nError Message: " + m + "\nDiagnostic: " + d, 1);
