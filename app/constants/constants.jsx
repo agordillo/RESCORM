@@ -1,11 +1,13 @@
 export const INITIAL_STATE = {
-    tracking: {
-        score: null,
-        progress_measure: 0,
-        objectives: {}
-    },
-    scorm: null,
-    user_profile: {
-        name: "Unknown"
-    }
+  tracking: {
+    progress_measure: 0,
+    score: null,
+    objectives: {}
+  },
+  scorm: null,
+  user_profile: {
+    id: undefined,
+    name: "Unknown",
+    learner_preference: {}
+  }
 }

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>SCORM Application React Boilerplate - SCORM 2004</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="/config/config_lms.js"></script>
   <script type="text/javascript" src="/vendors/Local_API_1484_11.js"></script>
   <script type="text/javascript" src="/vendors/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/vendors/SCORM_Player.js"></script>
@@ -16,14 +17,16 @@
     var scormResourceURLs = [scormpackageURL];
 
     // Create SCORM LMS API
-    var API_1484_11 = new Local_API_1484_11({debug: true, CMI:{learner_preference:{_children:"audio_level,language,delivery_speed,audio_captioning,difficulty",difficulty:"5"}}});
+    var API_1484_11 = new Local_API_1484_11({debug: LMS_CONFIG.debug, CMI:{learner_preference:LMS_CONFIG.scorm2004.learner_preference}});
 
     //Create SCORM player
-    var SCORM_Player = new SCORM_Player({debug: true, SCORM_VERSION: "2004", LMS_API: API_1484_11, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
+    var SCORM_Player = new SCORM_Player({debug: LMS_CONFIG.debug_scorm_player, SCORM_VERSION: "2004", LMS_API: API_1484_11, IFRAME_API: SCORM_IFRAME_API, SCORM_PACKAGE_URL: scormpackageURL, SCORM_RESOURCE_URLS: scormResourceURLs});
 
     SCORM_Player.loadScormContent(function(){
       // SCORM content loaded
-      console.log("SCORM content succesfully loaded");
+      if(LMS_CONFIG.debug_scorm_player){
+        console.log("SCORM content succesfully loaded");
+      }
     });
   </script>
 </body>

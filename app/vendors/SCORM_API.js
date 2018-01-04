@@ -191,7 +191,7 @@ export default function SCORM_API(options){
 
     winDebug = window.open("", "Debug", "width=600,height=300,resizable,scrollbars");
 
-    if(typeof winDebug == "undefined"){
+    if((typeof winDebug == "undefined")||(winDebug===null)){
       //pop-up window blocked
       return false;
     }

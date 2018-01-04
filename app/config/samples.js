@@ -1,4 +1,4 @@
-export var question_example = {
+export const question_example = {
   "question_type":"multiple_choice",
   "value":"¿Cuáles de las siguientes afirmaciones son verdaderas?",
   "choices": [

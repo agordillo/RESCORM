@@ -36,13 +36,13 @@ export function getUserProfile(){
   if(isConnected()){
     user.name = scorm.getvalue('cmi.learner_name');
     user.id = scorm.getvalue('cmi.learner_id');
-    user.learner_preferences = {};
+    user.learner_preference = {};
     var learnerPreferenceChildren = scorm.getvalue('cmi.learner_preference._children');
     if(learnerPreferenceChildren != 'false'){
       var learnerPreferences = learnerPreferenceChildren.split(",");
       for(var i=0; i<learnerPreferences.length; i++){
         if((typeof learnerPreferences[i] == "string")&&(learnerPreferences[i].length>0)){
-          user.learner_preferences[learnerPreferences[i]] = scorm.getvalue('cmi.learner_preference.' + learnerPreferences[i]);
+          user.learner_preference[learnerPreferences[i]] = scorm.getvalue('cmi.learner_preference.' + learnerPreferences[i]);
         }
       }
     }

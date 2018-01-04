@@ -30,7 +30,7 @@ export default class SCORM extends React.Component {
     }
   }
   onLoad(event){
-    var scorm = new SCORM_WRAPPER.init(true);
+    var scorm = new SCORM_WRAPPER.init(this.props.config.debug_scorm_api,this.props.config.debug_scorm_api_window);
     if(!SCORM_WRAPPER.isConnected()){
       return;
     }
@@ -38,8 +38,14 @@ export default class SCORM extends React.Component {
     
     //Init user profile
     var user = SCORM_WRAPPER.getUserProfile();
-    // console.log("USER PROFILE");
-    // console.log(user);
+    if((typeof user == "object")&&(typeof user.learner_preference == "object")){
+      if(typeof user.learner_preference.difficulty != "undefined"){
+        var difficulty = parseInt(user.learner_preference.difficulty);
+        if(!(isNaN(difficulty))){
+          user.learner_preference.difficulty = difficulty;
+        }
+      }
+    }
     this.props.dispatch(updateUserProfile(user));
 
     //Send initial progress measure
