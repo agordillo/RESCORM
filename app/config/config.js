@@ -1,7 +1,7 @@
 export const GLOBAL_CONFIG = {
-  debug: false,
+  debug: true,
   debug_scorm_api: true,
-  debug_scorm_api_window: true
+  debug_scorm_api_window: false
 }
 
 var processConfig = function(){

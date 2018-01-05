@@ -23,6 +23,7 @@ const config = {
   context: resolve(__dirname, 'app'),
 
   devServer: {
+    clientLogLevel: "none",
     hot: true,
     contentBase: resolve(__dirname, 'app'),
     publicPath: '/'
@@ -40,21 +41,21 @@ const config = {
         test: /\.es6$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['es2015'],
-                plugins: [require('babel-plugin-transform-object-rest-spread')],
-            },
+          loader: 'babel-loader',
+          options: {
+              presets: ['es2015'],
+              plugins: [require('babel-plugin-transform-object-rest-spread')],
+          },
         },
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['es2015', 'react'],
-            },
+          loader: 'babel-loader',
+          options: {
+              presets: ['es2015', 'react'],
+          },
         },
       },
       {
@@ -65,20 +66,20 @@ const config = {
         exclude: /node_modules/,
       },
       {
-          test: /\.css$/,
-          use: [
-              "style-loader",
-              "css-loader",
-          ],
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+        ],
       },
       {
-          test: /\.(scss|sass)$/,
-          exclude: /(node_modules|bower_components)/,
-          use: [
-              'style-loader',
-              'css-loader',
-              { loader: 'sass-loader', options: { sourceMap: true } },
-          ],
+        test: /\.(scss|sass)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          'style-loader',
+          'css-loader',
+          { loader: 'sass-loader', options: { sourceMap: true } },
+        ],
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=images/[name].[ext]' },
       { test: /\.eot(\?v=\d+.\d+.\d+)?$/, use: 'file-loader?&name=fonts/[name].[ext]' },
@@ -87,10 +88,11 @@ const config = {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url-loader?limit=10000&mimetype=image/svg+xml&name=images/[name].[ext]' },
     ]
   },
+  
   resolve: {
-        // resolve.alias could be useful for resolving certain modules easily
-        extensions: ['.js', '.jsx', '.es6'],
-    },
+    // resolve.alias could be useful for resolving certain modules easily
+    extensions: ['.js', '.jsx', '.es6'],
+  },
 
   plugins: [
     /* new webpack.LoaderOptionsPlugin({
