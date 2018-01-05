@@ -18,7 +18,7 @@
     ```
 6. Execute the following command to disable all logs for HMR (Hot Module Replacement):
     ```bash
-    node fixes/hmr_log_fix.js
+    node tasks/hmr_log_fix.js
     ```
 7. Execute the following command to start the development server:
     ```bash
@@ -36,6 +36,7 @@
 
 - 'npm start' - Start the development server.
 - 'npm run production' - Create a production ready build of the application in the 'dist' folder.
+- 'npm run scorm_package' - Create a production ready build of the application and  package it into two SCORM packages (compliant with SCORM 1.2 and SCORM 2004) in the 'dist_scorm' folder.  
 - 'npm run clean' - Remove the 'dist' folder.
 - 'npm run lint' - execute an eslint check.
 - 'npm test' - run all tests.

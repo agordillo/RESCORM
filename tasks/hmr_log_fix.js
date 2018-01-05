@@ -1,6 +1,8 @@
 // Disable all logs for HMR (Hot Module Replacement) until the log level issue will be fixed (https://github.com/webpack/webpack/issues/4115)
 // How to use: node fixes/hmr_log_fix.js
 
+console.log("Init task: Disable all logs for HMR (Hot Module Replacement)");
+
 const {resolve} = require('path');
 
 const replaceInFile = (filePath, searchRegex, replaceString) => {
@@ -28,3 +30,5 @@ const replaceInFile = (filePath, searchRegex, replaceString) => {
 const emptyStatement = '//$1';
 const consoleRegex = /(console\.(info|log|warn|error).+\);)/g;
 replaceInFile("node_modules/webpack/hot/log.js", consoleRegex, emptyStatement);
+
+console.log("Task finished");
