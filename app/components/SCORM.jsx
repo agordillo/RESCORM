@@ -1,6 +1,6 @@
 import React from 'react';
 import * as SCORM_WRAPPER from '../vendors/SCORM_API_Wrapper.js';
-import { scormConnected, updateUserProfile } from './../reducers/actions';
+import {scormConnected, updateUserProfile} from './../reducers/actions';
 
 export default class SCORM extends React.Component {
   constructor(props){

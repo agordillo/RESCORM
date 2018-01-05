@@ -2,7 +2,7 @@ import React from 'react';
 import './../assets/scss/quiz.scss';
 
 import * as Utils from '../vendors/Utils.js';
-import { addObjectives, objectiveAccomplished } from './../reducers/actions';
+import {addObjectives, objectiveAccomplished} from './../reducers/actions';
 
 import QuizChoice from './QuizChoice.jsx';
 

@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux';
+import {combineReducers} from 'redux';
 import trackingReducer from './trackingReducer';
 import scormReducer from './scormReducer';
 import userProfileReducer from './userProfileReducer';

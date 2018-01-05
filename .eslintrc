@@ -105,7 +105,10 @@
 
     /* Stylistic Issues */
     "array-bracket-spacing": [1, "never"],
-    "comma-spacing": [1, { "before": false, "after": true }],
+    "comma-spacing": [1, { 
+      "before": false, 
+      "after": true 
+    }],
     "comma-style": [1, "last"],
     "computed-property-spacing": 0,
     "consistent-this": 0,
@@ -132,7 +135,7 @@
     "no-trailing-spaces": 1,
     "no-underscore-dangle": 0,
     "no-unneeded-ternary": 1,
-    "object-curly-spacing": 0, // see Babel section
+    "object-curly-spacing": [1, "never"],
     "padded-blocks": [0, "never"],
     "quote-props": [0, "as-needed"],
     "semi-spacing": [1, { "before": false, "after": true }],

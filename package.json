@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "clean": "rimraf dist",
     "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
-    "lint": "eslint --fix **/*.js **/*.jsx **/*.es6 --ignore-pattern node_modules/ --ignore-pattern dist",
+    "lint": "eslint --fix **/*.js **/*.test.js **/*.jsx **/*.es6 --ignore-pattern node_modules/ --ignore-pattern dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",

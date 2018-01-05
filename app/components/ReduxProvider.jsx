@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
-import { AppContainer } from 'react-hot-loader';
+import {Provider} from 'react-redux';
+import {createStore, compose, applyMiddleware} from 'redux';
+import {AppContainer} from 'react-hot-loader';
 
-import { INITIAL_STATE } from '../constants/constants';
+import {INITIAL_STATE} from '../constants/constants';
 import GlobalState from './../reducers/reducers';
 import App from './App';
 
