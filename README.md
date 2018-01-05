@@ -6,29 +6,31 @@
     * A computer with:
       * Ubuntu 14.04+
       * Internet connection 
-1. Install [node.js](https://nodejs.org/es/download/) and [git](https://git-scm.com/downloads).
-2. Open a new terminal, go to your working directory and clone this GitHub poject:
+2. Install [node.js](https://nodejs.org/es/download/) and [git](https://git-scm.com/downloads).
+3. Open a new terminal, go to your working directory and clone this GitHub poject:
     ```bash
     git clone https://github.com/agordillo/scormapp-react-boilerplate
     ```
-3. Go to the 'scormapp-react-boilerplate' folder that has been created.
-4. Execute the following command to install all the project dependencies in the 'node_modules' folder:
+4. Go to the 'scormapp-react-boilerplate' folder that has been created.
+5. Execute the following command to install all the project dependencies in the 'node_modules' folder:
     ```bash
     npm install
     ```
-4. Execute the following command to start the development server:
+6. Execute the following command to disable all logs for HMR (Hot Module Replacement):
+    ```bash
+    node fixes/hmr_log_fix.js
+    ```
+7. Execute the following command to start the development server:
     ```bash
     npm start
     ```
     The app will be available at the following URL [http://localhost:8080](http://localhost:8080).  
     SCORM 1.2 environment will be available at [http://localhost:8080/scorm12.html](http://localhost:8080/scorm12.html).  
     SCORM 2004 environment will be available at [http://localhost:8080/scorm2004.html](http://localhost:8080/scorm2004.html).
-
-5. Development server can be stopped by pressing 'Ctrl-C'.
-6. Execute the following command to disable all logs for HMR (Hot Module Replacement):
-    ```bash
-    node fixes/hmr_log_fix.js
-    ```
+8. Development server can be stopped by pressing 'Ctrl-C'.
+9. Configuration can be specified in the following files:  
+    * app/config/config.js: Global configuration for the React application.  
+    * app/config/config_lms.js: Configuration for the SCORM environments.  
 
 ## Available commands
 

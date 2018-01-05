@@ -1,5 +1,5 @@
 var LMS_CONFIG = {
-  debug: false,
+  debug: true,
   debug_scorm_player: false,
   scorm2004: {
     learner_preference: {
