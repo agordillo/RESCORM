@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const {resolve} = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -24,6 +24,8 @@ const config = {
 
   devServer: {
     clientLogLevel: "none",
+    noInfo: true,
+    quiet: true,
     hot: true,
     contentBase: resolve(__dirname, 'app'),
     publicPath: '/'

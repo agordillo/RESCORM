@@ -25,7 +25,10 @@
     SCORM 2004 environment will be available at [http://localhost:8080/scorm2004.html](http://localhost:8080/scorm2004.html).
 
 5. Development server can be stopped by pressing 'Ctrl-C'.
-
+6. Execute the following command to disable all logs for HMR (Hot Module Replacement):
+    ```bash
+    node fixes/hmr_log_fix.js
+    ```
 
 ## Available commands
 
