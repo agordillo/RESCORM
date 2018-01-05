@@ -5,19 +5,17 @@ export default class QuizChoice extends React.Component {
     super(props);
   }
   render(){
-    var quizClassName = "quiz_choice";
-    var showCorrection = (this.props.quizAnswered);
+    let quizClassName = "quiz_choice";
+    let showCorrection = (this.props.quizAnswered);
     if(showCorrection){
       if(this.props.checked){
-        if (this.props.choice.answer===true){
+        if(this.props.choice.answer === true){
           quizClassName += " quiz_choice_correct";
         } else {
           quizClassName += " quiz_choice_incorrect";
         }
-      } else {
-        if (this.props.choice.answer===true){
-          quizClassName += " quiz_choice_correct";
-        }
+      } else if(this.props.choice.answer === true){
+        quizClassName += " quiz_choice_correct";
       }
     }
     return (

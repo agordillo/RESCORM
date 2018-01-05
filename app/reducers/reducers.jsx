@@ -4,9 +4,9 @@ import scormReducer from './scormReducer';
 import userProfileReducer from './userProfileReducer';
 
 const GlobalState = combineReducers({
-  tracking: trackingReducer,
-  scorm: scormReducer,
-  user_profile: userProfileReducer
+  tracking:trackingReducer,
+  scorm:scormReducer,
+  user_profile:userProfileReducer,
 });
 
 export default GlobalState;
