@@ -36,7 +36,7 @@
 
 - 'npm start' - Start the development server.
 - 'npm run production' - Create a production ready build of the application in the 'dist' folder.
-- 'npm clean' - Remove the 'dist' folder.
+- 'npm run clean' - Remove the 'dist' folder.
 - 'npm run lint' - execute an eslint check.
 - 'npm test' - run all tests.
 
