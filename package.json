@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
-    "clean": "rimraf dist",
-    "production": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
+    "clean": "rimraf dist rimraf dist_scorm",
+    "production": "rimraf dist && webpack --config webpack.production.config.js --progress --profile --colors",
     "scorm_package": "rimraf dist_scorm && cross-env npm run production && cross-env node tasks/scorm_package.js",
     "lint": "eslint --fix --ext .js,.jsx,.es6 app/main.js app/components app/config/config.js app/constants app/reducers tasks tests",
     "test": "jest",

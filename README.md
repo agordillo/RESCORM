@@ -37,7 +37,7 @@
 - 'npm start' - Start the development server.
 - 'npm run production' - Create a production ready build of the application in the 'dist' folder.
 - 'npm run scorm_package' - Create a production ready build of the application and  package it into two SCORM packages (compliant with SCORM 1.2 and SCORM 2004) in the 'dist_scorm' folder.  
-- 'npm run clean' - Remove the 'dist' folder.
+- 'npm run clean' - Remove the 'dist' and 'dist_scorm' folders.
 - 'npm run lint' - execute an eslint check.
 - 'npm test' - run all tests.
 
