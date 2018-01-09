@@ -1,6 +1,6 @@
 {
   "name": "scormapp-react-boilerplate",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "SCORM Application React Boilerplate. Created based on the following boilerplate: https://github.com/sonsoleslp/react-iweb-boilerplate.",
   "author": "Aldo Gordillo <agordillo@dit.upm.es>",
   "main": "index.js",
