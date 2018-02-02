@@ -39,11 +39,13 @@ function trackingReducer(state = {}, action){
     newState.score = 0;
     let objectivesIds = Object.keys(newState.objectives);
     for(let i = 0; i < objectivesIds.length; i++){
-      if(typeof newState.objectives[objectivesIds[i]].progress_measure === "number"){
-        newState.progress_measure += newState.objectives[objectivesIds[i]].progress_measure;
-      }
-      if(typeof newState.objectives[objectivesIds[i]].accomplished_score === "number"){
-        newState.score += newState.objectives[objectivesIds[i]].accomplished_score;
+      if(newState.objectives[objectivesIds[i]].accomplished === true){
+        if(typeof newState.objectives[objectivesIds[i]].progress_measure === "number"){
+          newState.progress_measure += newState.objectives[objectivesIds[i]].progress_measure;
+        }
+        if(typeof newState.objectives[objectivesIds[i]].accomplished_score === "number"){
+          newState.score += newState.objectives[objectivesIds[i]].accomplished_score;
+        }
       }
     }
 
