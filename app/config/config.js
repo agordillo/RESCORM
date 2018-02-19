@@ -1,13 +1,16 @@
 export let GLOBAL_CONFIG = {
   dev:{
     debug:true,
-    debug_scorm_api:true,
+    debug_scorm_api:false,
     debug_scorm_api_window:false,
+    available_locales:["en", "es"],
+    // locale: "es",
   },
   production:{
     debug:false,
     debug_scorm_api:false,
     debug_scorm_api_window:false,
+    available_locales:["en", "es"],
   },
 };
 

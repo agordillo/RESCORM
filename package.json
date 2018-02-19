@@ -9,7 +9,7 @@
     "clean": "rimraf dist rimraf dist_scorm",
     "production": "rimraf dist && webpack --config webpack.production.config.js --progress --profile --colors",
     "scorm_package": "rimraf dist_scorm && cross-env npm run production && cross-env node tasks/scorm_package.js",
-    "lint": "eslint --fix --ext .js,.jsx,.es6 app/main.js app/components app/config/config.js app/constants app/reducers tasks tests",
+    "lint": "eslint --fix --ext .js,.jsx,.es6 app/main.js app/components app/config/ app/vendors/I18n.js app/vendors/Utils.js app/constants app/reducers tasks tests",
     "test": "jest",
     "test:watch": "jest --watch",
     "coverage": "jest --coverage",

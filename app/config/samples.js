@@ -1,23 +1,23 @@
 export const question_example = {
   "question_type":"multiple_choice",
   "value":"¿Cuáles de las siguientes afirmaciones son verdaderas?",
-  "choices": [
+  "choices":[
     {
       "id":"1",
       "value":"Madrid es la capital de España.",
-      "answer":true
-    },{
+      "answer":true,
+    }, {
       "id":"2",
       "value":"Turín es la capital de Italia.",
-      "answer":false
-    },{
+      "answer":false,
+    }, {
       "id":"3",
       "value":"París es la capital de Francia.",
-      "answer":true
-    },{
+      "answer":true,
+    }, {
       "id":"4",
       "value":"Manchester es la capital de Inglaterra.",
-      "answer":false
-    }
-  ]
-}
+      "answer":false,
+    },
+  ],
+};

@@ -71,8 +71,8 @@ export default class Quiz extends React.Component {
         <h1>{this.props.quiz.value}</h1>
         {choices}
         <div className="quizButtonsWrapper">
-          <button className="answerQuiz" onClick={this.onAnswerQuiz.bind(this)} disabled={this.state.answered}>Answer</button>
-          <button className="resetQuiz" onClick={this.onResetQuiz.bind(this)} disabled={!this.state.answered}>Reset</button>
+          <button className="answerQuiz" onClick={this.onAnswerQuiz.bind(this)} disabled={this.state.answered}>{this.props.I18n.getTrans("i.answer")}</button>
+          <button className="resetQuiz" onClick={this.onResetQuiz.bind(this)} disabled={!this.state.answered}>{this.props.I18n.getTrans("i.reset")}</button>
         </div>
       </div>
     );
