@@ -48,6 +48,7 @@
 - [x] React Router v4
 - [x] Redux
 - [x] Redux-thunk
+- [x] Redux DevTools extension
 - [x] SCORM 1.2 and SCORM 2004 4th Editon support
 - [x] Webpack (v.3.6.0) and Webpack Dev Server (v.2.8.2)
 - [x] Hot Module Replacement using [react-hot-loader](https://github.com/gaearon/react-hot-loader)
