@@ -2,7 +2,7 @@ import React from 'react';
 import './../assets/scss/quiz.scss';
 
 import * as Utils from '../vendors/Utils.js';
-import {addObjectives, objectiveAccomplished} from './../reducers/actions';
+import {addObjectives, objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
 
 import QuizChoice from './QuizChoice.jsx';
 
@@ -54,6 +54,7 @@ export default class Quiz extends React.Component {
     // Send data via SCORM
     let objective = this.props.tracking.objectives.MyQuiz;
     this.props.dispatch(objectiveAccomplished(objective.id, objective.score * scorePercentage));
+    // this.props.dispatch(objectiveAccomplishedThunk(objective.id, objective.score * scorePercentage));
 
     // Mark quiz as answered
     this.setState({answered:true});

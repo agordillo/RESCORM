@@ -1,6 +1,6 @@
 {
   "name": "scormapp-react-boilerplate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "SCORM Application React Boilerplate. Created based on the following boilerplate: https://github.com/sonsoleslp/react-iweb-boilerplate.",
   "author": "Aldo Gordillo <agordillo@dit.upm.es>",
   "main": "index.js",
@@ -43,6 +43,7 @@
     "react-redux": "^5.0.6",
     "react-router-dom": "4.2.0",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
     "zip-folder": "^1.0.0"
   },
   "devDependencies": {
