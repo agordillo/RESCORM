@@ -32,6 +32,7 @@ export default class SCORM extends React.Component {
   onLoad(event){
     let scorm = new SCORM_WRAPPER.init(this.props.config.debug_scorm_api, this.props.config.debug_scorm_api_window);
     if(!SCORM_WRAPPER.isConnected()){
+      this.props.dispatch(scormConnected(false));
       return;
     }
     this.props.dispatch(scormConnected(scorm));

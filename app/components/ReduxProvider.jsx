@@ -5,6 +5,7 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {AppContainer} from 'react-hot-loader';
 
+import {GLOBAL_CONFIG} from '../config/config.js';
 import {INITIAL_STATE} from '../constants/constants';
 import GlobalState from './../reducers/reducers';
 import App from './App';
@@ -13,6 +14,9 @@ export default class ReduxProvider extends React.Component {
   constructor(props){
     super(props);
     this.initialState = INITIAL_STATE;
+    if(GLOBAL_CONFIG.adaptive === true){
+      this.initialState.wait_for_user_profile = true;
+    }
     this.store = this.configureStore();
   }
   configureStore(){

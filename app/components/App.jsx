@@ -16,11 +16,18 @@ export class App extends React.Component {
     I18n.init();
   }
   render(){
+    let appContent = "";
+    if(this.props.wait_for_user_profile !== true){
+      appContent = (
+        <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.question_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+      );
+    }
+
     return (
       <div id="container">
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
         <Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
-        <Quiz dispatch={this.props.dispatch} tracking={this.props.tracking} quiz={SAMPLES.question_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+        {appContent}
       </div>
     );
   }
