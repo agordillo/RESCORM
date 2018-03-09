@@ -5,14 +5,14 @@ export let GLOBAL_CONFIG = {
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
     // locale: "es",
-    adaptive: true
+    adaptive:true,
   },
   production:{
     debug:false,
     debug_scorm_api:false,
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
-    adaptive: true
+    adaptive:true,
   },
 };
 

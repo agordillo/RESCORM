@@ -19,7 +19,7 @@ export class App extends React.Component {
     let appContent = "";
     if(this.props.wait_for_user_profile !== true){
       appContent = (
-        <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.question_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+        <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
     }
 

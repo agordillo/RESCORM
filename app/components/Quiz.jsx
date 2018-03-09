@@ -2,80 +2,52 @@ import React from 'react';
 import './../assets/scss/quiz.scss';
 
 import * as Utils from '../vendors/Utils.js';
-import {addObjectives, objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
+import {addObjectives} from './../reducers/actions';
 
-import QuizChoice from './QuizChoice.jsx';
+import MCQuestion from './MCQuestion.jsx';
 
 export default class Quiz extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      selected_choices_ids:[],
-      answered:false,
+      current_question:1,
+      completed:false,
     };
   }
   componentDidMount(){
-    // Create objectives
-    let objective = new Utils.objective({id:"MyQuiz", progress_measure:1, score:1});
-    this.props.dispatch(addObjectives([objective]));
+    // Create objectives (One per question included in the quiz)
+    let objectives = [];
+    let nQuestions = this.props.quiz.questions.length;
+    for(let i = 0; i < nQuestions; i++){
+      objectives.push(new Utils.objective({id:("Question" + (i + 1)), progress_measure:(1 / nQuestions), score:(1 / nQuestions)}));
+    }
+    this.props.dispatch(addObjectives(objectives));
   }
-  handleChoiceChange(choice){
-    let newSelectedChoices = Object.assign([], this.state.selected_choices_ids);
-    let indexOf = newSelectedChoices.indexOf(choice.id);
-    if(indexOf === -1){
-      newSelectedChoices.push(choice.id);
+  onNextQuestion(){
+    let lastQuestion = (this.state.current_question === this.props.quiz.questions.length);
+    if(lastQuestion === false){
+      this.setState({current_question:(this.state.current_question + 1)});
     } else {
-      newSelectedChoices.splice(indexOf, 1);
+      this.setState({completed:true});
+      alert("Quiz finished");
     }
-    this.setState({selected_choices_ids:newSelectedChoices});
-  }
-  onAnswerQuiz(){
-    // Calculate score
-    let nChoices = this.props.quiz.choices.length;
-    let correctAnswers = 0;
-    let incorrectAnswers = 0;
-    let blankAnswers = 0;
-
-    for(let i = 0; i < nChoices; i++){
-      let choice = this.props.quiz.choices[i];
-      if(this.state.selected_choices_ids.indexOf(choice.id) !== -1){
-        // Answered choice
-        if(choice.answer === true){
-          correctAnswers += 1;
-        } else {
-          incorrectAnswers += 1;
-        }
-      } else {
-        blankAnswers += 1;
-      }
-    }
-    let scorePercentage = Math.max(0, (correctAnswers - incorrectAnswers) / this.props.quiz.choices.filter(function(c){return c.answer === true;}).length);
-
-    // Send data via SCORM
-    let objective = this.props.tracking.objectives.MyQuiz;
-    this.props.dispatch(objectiveAccomplished(objective.id, objective.score * scorePercentage));
-    // this.props.dispatch(objectiveAccomplishedThunk(objective.id, objective.score * scorePercentage));
-
-    // Mark quiz as answered
-    this.setState({answered:true});
-  }
-  onResetQuiz(){
-    this.setState({selected_choices_ids:[], answered:false});
   }
   render(){
-    let choices = [];
-    for(let i = 0; i < this.props.quiz.choices.length; i++){
-      choices.push(<QuizChoice key={"MyQuiz_" + "quiz_choice_" + i} choice={this.props.quiz.choices[i]} checked={this.state.selected_choices_ids.indexOf(this.props.quiz.choices[i].id) !== -1} handleChange={this.handleChoiceChange.bind(this)} quizAnswered={this.state.answered}/>);
+    let question = this.props.quiz.questions[this.state.current_question - 1];
+    let objective = this.props.tracking.objectives["Question" + (this.state.current_question)];
+    let onNextQuestion = this.onNextQuestion.bind(this);
+    let questionRender = "";
+
+    switch (question.type){
+    case "multiple_choice":
+      questionRender = (<MCQuestion question={question} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} quizCompleted={this.state.completed}/>);
+      break;
+    default:
+      questionRender = "Question type not supported";
     }
+
     return (
-      <div className="quiz">
-        <h1>{this.props.quiz.value}</h1>
-        {choices}
-        <div className="quizButtonsWrapper">
-          <button className="answerQuiz" onClick={this.onAnswerQuiz.bind(this)} disabled={this.state.answered}>{this.props.I18n.getTrans("i.answer")}</button>
-          <button className="resetQuiz" onClick={this.onResetQuiz.bind(this)} disabled={!this.state.answered}>{this.props.I18n.getTrans("i.reset")}</button>
-        </div>
-      </div>
+      questionRender
     );
   }
 }

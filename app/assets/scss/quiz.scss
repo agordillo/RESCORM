@@ -1,62 +1,62 @@
-div.quiz h1 {
+div.question h1 {
   font-size: 20px;
   margin-top: 25px;
   margin-bottom: 20px;
 }
 
-div.quiz div.quiz_choice {
+div.question div.question_choice {
   background: white;
   margin: 10px;
   padding: 2px;
 }
 
-div.quiz div.quiz_choice div.quizC1{
+div.question div.question_choice div.questionC1{
   float: left;
   width: 35px;
   margin-top: 9px;
   margin-left: 10px;
 }
 
-div.quiz div.quiz_choice div.quizC2{
+div.question div.question_choice div.questionC2{
   display: inline-block;
   width: auto;
   margin: 12px 8px 12px 8px;
 }
 
-div.quiz div.quiz_choice input[type="checkbox"] {
+div.question div.question_choice input[type="checkbox"] {
   width: 23px;
   height: 23px;
   cursor: pointer;
 }
 
-div.quiz div.quiz_choice input[type="checkbox"][disabled]{
+div.question div.question_choice input[type="checkbox"][disabled]{
   cursor: default;
 }
 
-div.quiz div.quiz_choice p {
+div.question div.question_choice p {
   display: inline-block;
   font-size: 20px;
   margin: 0px 0px 0px 0px;
 }
 
-div.quiz div.quiz_choice_correct {
+div.question div.question_choice_correct {
   background: #bdffbd;
 }
 
-div.quiz div.quiz_choice_incorrect {
+div.question div.question_choice_incorrect {
   background: #ffc8c8;
 }
 
-div.quiz div.quiz_choice_correct, div.quiz div.quiz_choice_incorrect {
+div.question div.question_choice_correct, div.question div.question_choice_incorrect {
   color: black;
   border-radius: 25px;
 }
 
-div.quiz div.quizButtonsWrapper {
+div.question div.questionButtonsWrapper {
   padding: 10px;
 }
 
-div.quiz div.quizButtonsWrapper button.answerQuiz, div.quiz div.quizButtonsWrapper button.resetQuiz {
+div.question div.questionButtonsWrapper button.answerQuestion, div.question div.questionButtonsWrapper button.resetQuestion, div.question div.questionButtonsWrapper button.nextQuestion {
   padding: 10px;
   margin-left: 10px;
   color: black;
@@ -67,7 +67,7 @@ div.quiz div.quizButtonsWrapper button.answerQuiz, div.quiz div.quizButtonsWrapp
   cursor: pointer;
 }
 
-div.quiz div.quizButtonsWrapper button[disabled]{
+div.question div.questionButtonsWrapper button[disabled]{
   color: gray;
   border: 2px solid gray;
   cursor: default;

@@ -21,7 +21,7 @@ export default class ReduxProvider extends React.Component {
   }
   configureStore(){
     let composeEnhancers = compose;
-    if((process.env.NODE_ENV || 'dev') == 'dev'){
+    if((process.env.NODE_ENV || 'dev') === 'dev'){
       composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     }
     const enhancers = composeEnhancers(

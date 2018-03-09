@@ -10,5 +10,5 @@ export const INITIAL_STATE = {
     name:"Unknown",
     learner_preference:{},
   },
-  wait_for_user_profile: false
+  wait_for_user_profile:false,
 };
