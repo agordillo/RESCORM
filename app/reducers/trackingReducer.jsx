@@ -50,6 +50,12 @@ function trackingReducer(state = {}, action){
     }
 
     return newState;
+  case 'FINISH_APP':
+    newState = JSON.parse(JSON.stringify(state));
+    if([true, false].indexOf(action.finished) !== -1){
+      newState.finished = action.finished;
+    }
+    return newState;
   default:
     return state;
   }

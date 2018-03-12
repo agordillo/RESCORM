@@ -6,6 +6,7 @@ export let GLOBAL_CONFIG = {
     available_locales:["en", "es"],
     // locale: "es",
     adaptive:true,
+    finish_screen:true,
   },
   production:{
     debug:false,
@@ -13,6 +14,7 @@ export let GLOBAL_CONFIG = {
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
     adaptive:true,
+    finish_screen:true,
   },
 };
 

@@ -49,3 +49,10 @@ export function showDialog(text){
     alert(text);
   };
 }
+
+export function finishApp(finished = true){
+  return {
+    type:'FINISH_APP',
+    finished:finished,
+  };
+}

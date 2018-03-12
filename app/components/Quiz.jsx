@@ -2,7 +2,7 @@ import React from 'react';
 import './../assets/scss/quiz.scss';
 
 import * as Utils from '../vendors/Utils.js';
-import {addObjectives} from './../reducers/actions';
+import {addObjectives, finishApp} from './../reducers/actions';
 
 import MCQuestion from './MCQuestion.jsx';
 
@@ -11,7 +11,6 @@ export default class Quiz extends React.Component {
     super(props);
     this.state = {
       current_question:1,
-      completed:false,
     };
   }
   componentDidMount(){
@@ -24,23 +23,23 @@ export default class Quiz extends React.Component {
     this.props.dispatch(addObjectives(objectives));
   }
   onNextQuestion(){
-    let lastQuestion = (this.state.current_question === this.props.quiz.questions.length);
-    if(lastQuestion === false){
+    let isLastQuestion = (this.state.current_question === this.props.quiz.questions.length);
+    if(isLastQuestion === false){
       this.setState({current_question:(this.state.current_question + 1)});
     } else {
-      this.setState({completed:true});
-      alert("Quiz finished");
+      this.props.dispatch(finishApp(true));
     }
   }
   render(){
     let question = this.props.quiz.questions[this.state.current_question - 1];
+    let isLastQuestion = (this.state.current_question === this.props.quiz.questions.length);
     let objective = this.props.tracking.objectives["Question" + (this.state.current_question)];
     let onNextQuestion = this.onNextQuestion.bind(this);
     let questionRender = "";
 
     switch (question.type){
     case "multiple_choice":
-      questionRender = (<MCQuestion question={question} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} quizCompleted={this.state.completed}/>);
+      questionRender = (<MCQuestion question={question} dispatch={this.props.dispatch} I18n={this.props.I18n} objective={objective} onNextQuestion={onNextQuestion} isLastQuestion={isLastQuestion} quizCompleted={this.props.tracking.finished}/>);
       break;
     default:
       questionRender = "Question type not supported";

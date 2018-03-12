@@ -76,7 +76,7 @@ export default class MCQuestion extends React.Component {
         <div className="questionButtonsWrapper">
           <button className="answerQuestion" onClick={this.onAnswerQuestion.bind(this)} disabled={this.state.answered || this.props.quizCompleted}>{this.props.I18n.getTrans("i.answer")}</button>
           <button className="resetQuestion" onClick={this.onResetQuestion.bind(this)} disabled={!this.state.answered || this.props.quizCompleted}>{this.props.I18n.getTrans("i.reset")}</button>
-          <button className="nextQuestion" onClick={this.onNextQuestion.bind(this)} disabled={!this.state.answered || this.props.quizCompleted}>{this.props.I18n.getTrans("i.next")}</button>
+          <button className="nextQuestion" onClick={this.onNextQuestion.bind(this)} disabled={!this.state.answered || this.props.quizCompleted}>{this.props.isLastQuestion ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</button>
         </div>
       </div>
     );

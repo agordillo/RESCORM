@@ -8,6 +8,7 @@ import * as SAMPLES from '../config/samples.js';
 
 import SCORM from './SCORM.jsx';
 import Header from './Header.jsx';
+import FinishScreen from './FinishScreen.jsx';
 import Quiz from './Quiz.jsx';
 
 export class App extends React.Component {
@@ -16,17 +17,28 @@ export class App extends React.Component {
     I18n.init();
   }
   render(){
+    let appHeader = "";
     let appContent = "";
-    if(this.props.wait_for_user_profile !== true){
+
+    if((this.props.tracking.finished !== true) || (GLOBAL_CONFIG.finish_screen === false)){
+      appHeader = (
+        <Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
+      );
+      if(this.props.wait_for_user_profile !== true){
+        appContent = (
+          <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+        );
+      }
+    } else {
       appContent = (
-        <Quiz dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
+        <FinishScreen dispatch={this.props.dispatch} user_profile={this.props.user_profile} tracking={this.props.tracking} quiz={SAMPLES.quiz_example} config={GLOBAL_CONFIG} I18n={I18n}/>
       );
     }
 
     return (
       <div id="container">
         <SCORM dispatch={this.props.dispatch} tracking={this.props.tracking} config={GLOBAL_CONFIG}/>
-        <Header user_profile={this.props.user_profile} tracking={this.props.tracking} config={GLOBAL_CONFIG} I18n={I18n}/>
+        {appHeader}
         {appContent}
       </div>
     );
