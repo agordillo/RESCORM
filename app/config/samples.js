@@ -23,7 +23,30 @@ export const quiz_example = {
           "answer":false,
         },
       ],
-      "difficulty":1,
+      "difficulty":2,
+    }, {
+      "type":"multiple_choice",
+      "value":"2 ¿Cuáles de las siguientes afirmaciones son verdaderas?",
+      "choices":[
+        {
+          "id":"1",
+          "value":"Lima es la capital de Ecuador.",
+          "answer":false,
+        }, {
+          "id":"2",
+          "value":"Tokio es la capital de China.",
+          "answer":false,
+        }, {
+          "id":"3",
+          "value":"Santiago de Chile es la capital de Chile.",
+          "answer":true,
+        }, {
+          "id":"4",
+          "value":"Ankara es la capital de Turquía.",
+          "answer":true,
+        },
+      ],
+      "difficulty":5,
     }, {
       "type":"multiple_choice",
       "value":"¿Cuáles de las siguientes afirmaciones son verdaderas?",
@@ -42,11 +65,11 @@ export const quiz_example = {
           "answer":false,
         }, {
           "id":"4",
-          "value":"Santiago de Chile es la capital de Chile.",
+          "value":"Tórshavn es la capital de Islas Feroe.",
           "answer":true,
         },
       ],
-      "difficulty":5,
+      "difficulty":8,
     },
   ],
 };
