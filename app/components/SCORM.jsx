@@ -8,18 +8,18 @@ let SCORE_THRESHOLD;
 
 export default class SCORM extends React.Component {
   constructor(props){
-    if(typeof props.config.scorm == "object"){
-      if((typeof props.config.scorm.completion_threshold == "number")&&(props.config.scorm.completion_threshold >= 0.0)&&(props.config.scorm.completion_threshold <= 1.0)){
+    super(props);
+    if(typeof props.config.scorm === "object"){
+      if((typeof props.config.scorm.completion_threshold === "number") && (props.config.scorm.completion_threshold >= 0.0) && (props.config.scorm.completion_threshold <= 1.0)){
         COMPLETION_THRESHOLD = props.config.scorm.completion_threshold;
       }
-      if((typeof props.config.scorm.completion_attempt_threshold == "number")&&(props.config.scorm.completion_attempt_threshold >= 0.0)&&(props.config.scorm.completion_attempt_threshold <= 1.0)){
+      if((typeof props.config.scorm.completion_attempt_threshold === "number") && (props.config.scorm.completion_attempt_threshold >= 0.0) && (props.config.scorm.completion_attempt_threshold <= 1.0)){
         COMPLETION_ATTEMPT_THRESHOLD = props.config.completion_attempt_threshold;
       }
-      if((typeof props.config.scorm.score_threshold == "number")&&(props.config.scorm.score_threshold >= 0.0)&&(props.config.scorm.score_threshold <= 1.0)){
+      if((typeof props.config.scorm.score_threshold === "number") && (props.config.scorm.score_threshold >= 0.0) && (props.config.scorm.score_threshold <= 1.0)){
         SCORE_THRESHOLD = props.config.scorm.score_threshold;
       }
     }
-    super(props);
   }
   componentDidMount(){
     window.addEventListener("load", this.onLoad.bind(this));
@@ -33,11 +33,11 @@ export default class SCORM extends React.Component {
     if(SCORM_WRAPPER.isConnected()){
       let updateProgress = (prevProps.tracking.progress_measure !== this.props.tracking.progress_measure);
       if(updateProgress){
-        SCORM_WRAPPER.updateProgressMeasure(this.props.tracking.progress_measure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD);
+        SCORM_WRAPPER.updateProgressMeasure(this.props.tracking.progress_measure, COMPLETION_THRESHOLD, COMPLETION_ATTEMPT_THRESHOLD);
       }
       let updateScore = (prevProps.tracking.score !== this.props.tracking.score);
       if(updateScore){
-        SCORM_WRAPPER.updateScore(this.props.tracking.score,SCORE_THRESHOLD);
+        SCORM_WRAPPER.updateScore(this.props.tracking.score, SCORE_THRESHOLD);
       }
       if(updateProgress || updateScore){
         SCORM_WRAPPER.commit();
@@ -65,7 +65,7 @@ export default class SCORM extends React.Component {
     this.props.dispatch(updateUserProfile(user));
 
     // Send initial progress measure
-    SCORM_WRAPPER.updateProgressMeasure(this.props.tracking.progress_measure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD);
+    SCORM_WRAPPER.updateProgressMeasure(this.props.tracking.progress_measure, COMPLETION_THRESHOLD, COMPLETION_ATTEMPT_THRESHOLD);
 
     // Init score
     let hasScore = (Object.keys(this.props.tracking.objectives).reduce(function(acc, key){ return acc + this.props.tracking.objectives[key].score;}.bind(this), 0) > 0);

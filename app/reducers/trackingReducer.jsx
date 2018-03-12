@@ -57,11 +57,11 @@ function trackingReducer(state = {}, action){
     newState.objectives = {};
     newState.progress_measure = 0;
     newState.score = 0;
-    var objectiveKeys = Object.keys(state.objectives);
-    for(let i=0; i<objectiveKeys.length; i++){
-      let objective = state.objectives[objectiveKeys[i]];
-      objective = Utils.ResetObjective(objective);
-      newState.objectives[objectiveKeys[i]] = objective;
+    let objectiveKeys = Object.keys(state.objectives);
+    for(let i = 0; i < objectiveKeys.length; i++){
+      let _objective = state.objectives[objectiveKeys[i]];
+      _objective = Utils.ResetObjective(_objective);
+      newState.objectives[objectiveKeys[i]] = _objective;
     }
     return newState;
   case 'FINISH_APP':

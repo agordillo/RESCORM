@@ -21,7 +21,7 @@ export function addObjectives(objectives){
 
 export function resetObjectives(objectives){
   return {
-    type:'RESET_OBJECTIVES'
+    type:'RESET_OBJECTIVES',
   };
 }
 

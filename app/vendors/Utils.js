@@ -25,10 +25,14 @@ export function Objective(options){
 }
 
 export function ResetObjective(objective){
-  if(typeof objective != "object"){
+  if(typeof objective !== "object"){
     return objective;
   }
   objective.accomplished = false;
   objective.accomplished_score = null;
   return objective;
+}
+
+export function shuffleArray(array){
+  return array.map((a) => [Math.random(), a]).sort((a, b) => a[0] - b[0]).map((a) => a[1]);
 }
