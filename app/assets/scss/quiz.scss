@@ -1,6 +1,12 @@
-div.question h1 {
+div.quizHeader p {
   font-size: 20px;
   margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+div.question h1 {
+  font-size: 20px;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -56,7 +62,7 @@ div.question div.questionButtonsWrapper {
   padding: 10px;
 }
 
-div.question div.questionButtonsWrapper button.answerQuestion, div.question div.questionButtonsWrapper button.resetQuestion, div.question div.questionButtonsWrapper button.nextQuestion {
+div.question div.questionButtonsWrapper button.answerQuestion, div.question div.questionButtonsWrapper button.resetQuestion, div.question div.questionButtonsWrapper button.resetQuiz, div.question div.questionButtonsWrapper button.nextQuestion {
   padding: 10px;
   margin-left: 10px;
   color: black;

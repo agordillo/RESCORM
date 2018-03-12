@@ -1,3 +1,5 @@
+import * as Utils from '../vendors/Utils.js';
+
 function trackingReducer(state = {}, action){
   let newState;
   switch (action.type){
@@ -49,6 +51,18 @@ function trackingReducer(state = {}, action){
       }
     }
 
+    return newState;
+  case 'RESET_OBJECTIVES':
+    newState = JSON.parse(JSON.stringify(state));
+    newState.objectives = {};
+    newState.progress_measure = 0;
+    newState.score = 0;
+    var objectiveKeys = Object.keys(state.objectives);
+    for(let i=0; i<objectiveKeys.length; i++){
+      let objective = state.objectives[objectiveKeys[i]];
+      objective = Utils.ResetObjective(objective);
+      newState.objectives[objectiveKeys[i]] = objective;
+    }
     return newState;
   case 'FINISH_APP':
     newState = JSON.parse(JSON.stringify(state));

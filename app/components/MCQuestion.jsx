@@ -4,6 +4,7 @@ import * as Utils from '../vendors/Utils.js';
 import {objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
+import QuestionButtons from './QuestionButtons.jsx';
 
 export default class MCQuestion extends React.Component {
   constructor(props){
@@ -73,11 +74,7 @@ export default class MCQuestion extends React.Component {
       <div className="question">
         <h1>{this.props.question.value}</h1>
         {choices}
-        <div className="questionButtonsWrapper">
-          <button className="answerQuestion" onClick={this.onAnswerQuestion.bind(this)} disabled={this.state.answered || this.props.quizCompleted}>{this.props.I18n.getTrans("i.answer")}</button>
-          <button className="resetQuestion" onClick={this.onResetQuestion.bind(this)} disabled={!this.state.answered || this.props.quizCompleted}>{this.props.I18n.getTrans("i.reset")}</button>
-          <button className="nextQuestion" onClick={this.onNextQuestion.bind(this)} disabled={!this.state.answered || this.props.quizCompleted}>{this.props.isLastQuestion ? this.props.I18n.getTrans("i.finish_quiz") : this.props.I18n.getTrans("i.next")}</button>
-        </div>
+        <QuestionButtons I18n={this.props.I18n} onAnswerQuestion={this.onAnswerQuestion.bind(this)} onResetQuestion={this.onResetQuestion.bind(this)} onResetQuiz={this.props.onResetQuiz} onNextQuestion={this.onNextQuestion.bind(this)} answered={this.state.answered} quizCompleted={this.props.quizCompleted} allow_finish={this.props.isLastQuestion}/>
       </div>
     );
   }

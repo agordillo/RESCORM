@@ -1,13 +1,13 @@
 let next_objective_id = 1;
 
-export function objective(options){
+export function Objective(options){
   // Constructor
   let defaults = {
     id:next_objective_id,
+    accomplished:false,
     progress_measure:0,
     score:null,
     accomplished_score:null,
-    accomplished:false,
   };
   let _objective = Object.assign({}, defaults, options);
 
@@ -22,4 +22,13 @@ export function objective(options){
 
   next_objective_id += 1;
   return _objective;
+}
+
+export function ResetObjective(objective){
+  if(typeof objective != "object"){
+    return objective;
+  }
+  objective.accomplished = false;
+  objective.accomplished_score = null;
+  return objective;
 }

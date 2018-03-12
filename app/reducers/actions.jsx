@@ -19,6 +19,12 @@ export function addObjectives(objectives){
   };
 }
 
+export function resetObjectives(objectives){
+  return {
+    type:'RESET_OBJECTIVES'
+  };
+}
+
 export function objectiveAccomplished(objectiveId, accomplishedScore = null){
   return {
     type:'OBJECTIVE_ACCOMPLISHED',
