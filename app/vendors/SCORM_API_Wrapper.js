@@ -53,11 +53,11 @@ export function getUserProfile(){
 /*
 * ProgressMeasure should be a number on a [0,1] scale.
 */
-export function updateProgressMeasure(progressMeasure){
+export function updateProgressMeasure(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD){
   if(typeof progressMeasure == "number"){
     progressMeasure = Math.max(0,Math.min(1,progressMeasure));
     scorm.setvalue('cmi.progress_measure',progressMeasure.toString());
-    this.updateCompletionStatus(progressMeasure);
+    this.updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD);
   }
 }
 
@@ -79,12 +79,12 @@ export function updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD=0,CO
  /*
   * Score should be a number on a [0,1] scale.
   */
-export function updateScore(score){
+export function updateScore(score,SCORE_THRESHOLD){
   if(typeof score == "number"){
     score = Math.max(0,Math.min(1,score));
     scorm.setvalue('cmi.score.scaled',score.toString());
     scorm.setvalue('cmi.score.raw',(score*100).toString());
-    this.updateSuccessStatus(score);
+    this.updateSuccessStatus(score,SCORE_THRESHOLD);
   }
 }
 

@@ -1,12 +1,16 @@
 export let GLOBAL_CONFIG = {
   dev:{
     debug:true,
-    debug_scorm_api:false,
+    debug_scorm_api:true,
     debug_scorm_api_window:false,
     available_locales:["en", "es"],
     // locale: "es",
     adaptive:true,
     finish_screen:true,
+    scorm: {
+      completion_threshold: 0.5,
+      score_threshold: 0.6,
+    }, 
   },
   production:{
     debug:false,
@@ -15,6 +19,10 @@ export let GLOBAL_CONFIG = {
     available_locales:["en", "es"],
     adaptive:true,
     finish_screen:true,
+    scorm: {
+      completion_threshold: 0.5,
+      score_threshold: 0.6,
+    },
   },
 };
 
