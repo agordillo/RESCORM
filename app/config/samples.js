@@ -26,7 +26,7 @@ export const quiz_example = {
       "difficulty":2,
     }, {
       "type":"multiple_choice",
-      "value":"2 ¿Cuáles de las siguientes afirmaciones son verdaderas?",
+      "value":"¿Cuáles de las siguientes afirmaciones son verdaderas?",
       "choices":[
         {
           "id":"1",

@@ -1,0 +1,10 @@
+scormapp-react-boilerplate is available under MIT License.
+
+This boilerplate has been developed based on ES6 React boilerplate using Webpack (https://github.com/KleoPetroff/react-webpack-boilerplate) and react-iweb-boilerplate (https://github.com/sonsoleslp/react-iweb-boilerplate).
+
+
+Images:
+
+React logo is licensed under the Creative Commons Attribution-Share Alike 1.0 Generic license.
+Author: Facebook
+Source: https://commons.wikimedia.org/wiki/File:React-icon.svg

@@ -5,14 +5,14 @@ let default_locale;
 let locale;
 
 export function init(){
-	// Set default locale
+  // Set default locale
   if((typeof GLOBAL_CONFIG.available_locales !== "undefined") && (GLOBAL_CONFIG.available_locales instanceof Array) && (GLOBAL_CONFIG.available_locales.length > 0)){
     default_locale = GLOBAL_CONFIG.available_locales[0]; // Default language
   } else {
     default_locale = "en";
   }
 
-	// Set locale
+  // Set locale
   if(isValidLanguage(GLOBAL_CONFIG.locale)){
     locale = GLOBAL_CONFIG.locale;
   } else {
@@ -93,9 +93,13 @@ function getTransWithParams(trans, params){
   for(let key in params){
     let stringToReplace = "#{" + key + "}";
     if(trans.indexOf(stringToReplace) !== -1){
-      trans = trans.replaceAll(stringToReplace, params[key]);
+      trans = replaceAll(trans, stringToReplace, params[key]);
     }
   }
 
   return trans;
+}
+
+function replaceAll(string, find, replace){
+  return string.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
 }

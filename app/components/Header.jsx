@@ -38,7 +38,8 @@ export default class Header extends React.Component {
     });
 
     return (
-      <div>
+      <div className="header_wrapper">
+        <img src="assets/images/react_logo.png"/>
         <h1 id="heading">{this.props.I18n.getTrans("i.title")}</h1>
         <p id="tracking">{trackingEls}</p>
         {loggedEl}
