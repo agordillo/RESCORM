@@ -1,7 +1,7 @@
 {
-  "name": "scormapp-react-boilerplate",
+  "name": "RESCORM",
   "version": "0.0.2",
-  "description": "SCORM Application React Boilerplate. Created based on the following boilerplate: https://github.com/sonsoleslp/react-iweb-boilerplate.",
+  "description": "A boilerplate for creating SCORM-compliant React applications",
   "author": "Aldo Gordillo <agordillo@dit.upm.es>",
   "main": "index.js",
   "scripts": {

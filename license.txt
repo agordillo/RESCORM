@@ -1,4 +1,4 @@
-scormapp-react-boilerplate is available under MIT License.
+RESCORM is available under MIT License.
 
 This boilerplate has been developed based on ES6 React boilerplate using Webpack (https://github.com/KleoPetroff/react-webpack-boilerplate) and react-iweb-boilerplate (https://github.com/sonsoleslp/react-iweb-boilerplate).
 
