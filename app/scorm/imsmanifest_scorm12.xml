@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<manifest identifier="ScormAppReactBoilerplate" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+<manifest identifier="RescormBoilerplate" version="1.0" xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
   <metadata>
     <schema>ADL SCORM</schema>
     <schemaversion>1.2</schemaversion>
     <lom xmlns="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ltsc.ieee.org/xsd/LOM lom.xsd">
       <general>
         <title>
-          <string language="es">ScormAppReactBoilerplate</string>
+          <string language="es">RescormBoilerplate</string>
         </title>
         <language>es</language>
       </general>
@@ -61,15 +61,15 @@
   </metadata>
   <organizations default="defaultOrganization">
     <organization identifier="defaultOrganization">
-      <title>ScormAppReactBoilerplate</title>
-      <item identifier="ScormAppReactBoilerplate" isvisible="true" identifierref="ScormAppReactBoilerplate_resource">
-        <title>ScormAppReactBoilerplate</title>
+      <title>RescormBoilerplate</title>
+      <item identifier="RescormBoilerplate" isvisible="true" identifierref="RescormBoilerplate_resource">
+        <title>RescormBoilerplate</title>
         <adlcp:masteryscore>50</adlcp:masteryscore>
       </item>
     </organization>
   </organizations>
   <resources>
-    <resource identifier="ScormAppReactBoilerplate_resource" type="webcontent" href="index.html" adlcp:scormtype="sco">
+    <resource identifier="RescormBoilerplate_resource" type="webcontent" href="index.html" adlcp:scormtype="sco">
       <file href="index.html" />
     </resource>
   </resources>

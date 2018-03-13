@@ -14,7 +14,7 @@ export let LOCALES = {
     "i.reset_question":"Reset question",
     "i.reset_quiz":"Reset quiz",
     "i.score":"Score",
-    "i.title":"SCORM Application React Boilerplate",
+    "i.title":"RESCORM Boilerplate",
   },
   es:{
     "i.answer":"Responder",

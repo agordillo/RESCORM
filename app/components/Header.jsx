@@ -39,7 +39,7 @@ export default class Header extends React.Component {
 
     return (
       <div className="header_wrapper">
-        <img src="assets/images/react_logo.png"/>
+        <a target="_blank" href="https://github.com/agordillo/RESCORM"><img src="assets/images/react_logo.png"/></a>
         <h1 id="heading">{this.props.I18n.getTrans("i.title")}</h1>
         <p id="tracking">{trackingEls}</p>
         {loggedEl}
