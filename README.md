@@ -22,14 +22,14 @@ RESCORM is a boilerplate for creating SCORM-compliant React applications.
 - [x] I18n  
   
   
-# Available commands
+# Installation and documentation
 
-- 'npm start' - Start the development server.
-- 'npm run production' - Create a production ready build of the application in the 'dist' folder.
-- 'npm run scorm_package' - Create a production ready build of the application and  package it into two SCORM packages (compliant with SCORM 1.2 and SCORM 2004) in the 'dist_scorm' folder.  
-- 'npm run clean' - Remove the 'dist' and 'dist_scorm' folders.
-- 'npm run lint' - execute an eslint check.
-- 'npm test' - run all tests.
+Visit the RESCORM [wiki](https://github.com/agordillo/RESCORM/wiki) to see all the available documentation of the boilerplate including installation instructions. 
+ 
+ 
+# Discussion and contribution
+  
+Feel free to raise an issue or send us a message at [github](https://github.com/agordillo/RESCORM/issues).  
 
 
 # License
