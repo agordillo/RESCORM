@@ -29,7 +29,7 @@ Visit the RESCORM [wiki](https://github.com/agordillo/RESCORM/wiki) to see all t
  
 # Discussion and contribution
   
-Feel free to raise an issue or send us a message at [github](https://github.com/agordillo/RESCORM/issues).  
+Feel free to raise an issue or send us a message at [GitHub](https://github.com/agordillo/RESCORM/issues).  
 
 
 # License
