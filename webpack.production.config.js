@@ -8,8 +8,10 @@ const config = {
   devtool: 'cheap-module-source-map',
 
   entry: [
-    './main.js',
-    './assets/scss/main.scss',
+    'babel-polyfill',
+    'react',
+    'react-dom',
+    './main.js'
   ],
 
   context: resolve(__dirname, 'app'),

@@ -8,7 +8,10 @@ const config = {
   devtool: 'cheap-module-eval-source-map',
 
   entry: [
+    'babel-polyfill',
     'react-hot-loader/patch',
+    'react',
+    'react-dom',
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     './main.js'
