@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "clean": "rimraf dist rimraf dist_scorm",
     "production": "rimraf dist && cross-env NODE_ENV=production webpack --config webpack.production.config.js --progress --profile --colors && cross-env npm run copy_assets",
-    "copy_assets": "mkdir -p dist/assets && cp -r app/assets dist/ && rm -rf dist/assets/scss",
+    "copy_assets": "cross-env mkdir -p dist/assets && cross-env cp -r app/assets dist/ && cross-env rm -rf dist/assets/scss",
     "scorm_package": "rimraf dist_scorm && cross-env npm run production && cross-env node tasks/scorm_package.js",
     "lint": "eslint --fix --ext .js,.jsx,.es6 app/main.js app/components app/config/ app/vendors/I18n.js app/vendors/Utils.js app/constants app/reducers tasks tests",
     "test": "jest",
