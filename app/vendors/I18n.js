@@ -26,12 +26,12 @@ export function init(){
 }
 
 function getUserLanguage(){
-	// Locale in URL
+  // Locale in URL
   let urlParams = readURLparams();
   if(isValidLanguage(urlParams.locale)){
     return urlParams.locale;
   }
-	// Browser language
+  // Browser language
   let browserLang = (navigator.language || navigator.userLanguage);
   if(isValidLanguage(browserLang)){
     return browserLang;
@@ -67,12 +67,12 @@ function isValidLanguage(language){
 }
 
 export function getTrans(s, params){
-	// First language
+  // First language
   if((typeof LOCALES[locale] !== "undefined") && (typeof LOCALES[locale][s] === "string")){
     return getTransWithParams(LOCALES[locale][s], params);
   }
 
-	// Default language
+  // Default language
   if((locale !== default_locale) && (typeof LOCALES[default_locale] !== "undefined") && (typeof LOCALES[default_locale][s] === "string")){
     return getTransWithParams(LOCALES[default_locale][s], params);
   }

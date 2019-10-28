@@ -1,12 +1,12 @@
 const {resolve} = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 const config = {
   devtool: 'cheap-module-eval-source-map',
-
+  mode: 'development',
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
@@ -16,7 +16,6 @@ const config = {
     'webpack/hot/only-dev-server',
     './main.js'
   ],
-
   output: {
     filename: 'bundle.js',
     path: resolve(__dirname, 'dist'),
@@ -36,39 +35,10 @@ const config = {
 
   module: {
     rules: [
-      // {
-      //   enforce: "pre",
-      //   test: /\.(es6|jsx|js)$/,
-      //   exclude: /node_modules/,
-      //   loader: "eslint-loader"
-      // },
       {
-        test: /\.es6$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-              presets: ['es2015'],
-              plugins: [require('babel-plugin-transform-object-rest-spread')],
-          },
-        },
-      },
-      {
-        test: /\.jsx?$/,
+        test: /\.(es6|jsx|js)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-              presets: ['es2015', 'react'],
-          },
-        },
-      },
-      {
-        test: /\.js$/,
-        loaders: [
-          'babel-loader',
-        ],
-        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"]
       },
       {
         test: /\.css$/,
@@ -100,15 +70,15 @@ const config = {
   },
 
   plugins: [
-    /* new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
+     new webpack.LoaderOptionsPlugin({
+      test: /\.(js|jsx)$/,
       options: {
         eslint: {
           configFile: resolve(__dirname, '.eslintrc'),
           cache: false,
         }
       },
-    }),*/
+    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CopyWebpackPlugin([{ from: 'vendors', to: 'vendors' }]),
     new OpenBrowserPlugin({ url: 'http://localhost:8080/scorm2004.html' }),

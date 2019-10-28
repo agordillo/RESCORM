@@ -1,19 +1,18 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const config = {
   devtool: 'cheap-module-source-map',
-
+  mode: 'production',
   entry: [
     'babel-polyfill',
     'react',
     'react-dom',
     './main.js'
   ],
-
   context: resolve(__dirname, 'app'),
 
   output: {
@@ -21,7 +20,7 @@ const config = {
     path: resolve(__dirname, 'dist'),
     publicPath: '',
   },
-
+  
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HtmlWebpackPlugin({
@@ -34,42 +33,24 @@ const config = {
       minimize: true,
       debug: false,
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      beautify: false
-    }),
     new webpack.DefinePlugin({ 'process.env': { NODE_ENV: JSON.stringify('production') } }),
-    new ExtractTextPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
+    new MiniCssExtractPlugin({ filename: './styles/style.css', disable: false, allChunks: true }),
     new CopyWebpackPlugin([{ from: './vendors', to: 'vendors' }]),
   ],
 
   module: {
-    loaders: [
-      /* {
+    rules: [
+       {
         enforce: "pre",
         test: /\.(es6|jsx|js)$/,
         exclude: /node_modules/,
         loader: "eslint-loader"
-      }, */
+      }, 
       {
-        test: /\.es6$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['es2015'],
-                plugins: [require('babel-plugin-transform-object-rest-spread')],
-            },
-        },
-      },
-      {
-        test: /\.jsx?$/,
+        test: /\.(jsx|js|es6)?$/,
         exclude: /node_modules/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['es2015', 'react'],
-            },
-        },
+        use: ["babel-loader", "eslint-loader"]
+
       },
       {
           test: /\.css$/,

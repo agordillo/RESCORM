@@ -38,13 +38,13 @@ export default class ReduxProvider extends React.Component {
   }
   render(){
     return (
-            <AppContainer>
-                <Provider store={this.store}>
-                    <div style={{height:'100%'}}>
-                        <App store={this.store}/>
-                    </div>
-                </Provider>
-            </AppContainer>
+      <AppContainer>
+        <Provider store={this.store}>
+          <div style={{height:'100%'}}>
+            <App store={this.store}/>
+          </div>
+        </Provider>
+      </AppContainer>
     );
   }
 }

@@ -1,11 +1,19 @@
-{ "env": {
-  "browser": true,
-  "node": true
-},
-  "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
+{ 
+    "env": {
+      "browser": true,
+      "node": true
+    },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+],
+"parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
   "rules": {
     /*Possible Errors */
     "comma-dangle": [1, "always-multiline"],
@@ -182,6 +190,7 @@
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
     "react/wrap-multilines": 0,
+    "react/prop-types": 0,
     "react/prefer-es6-class": [1, "always"]
   }
 }
