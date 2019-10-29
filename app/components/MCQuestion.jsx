@@ -1,7 +1,6 @@
 import React from 'react';
 
-import * as Utils from '../vendors/Utils.js';
-import {objectiveAccomplished, objectiveAccomplishedThunk} from './../reducers/actions';
+import {objectiveAccomplished} from './../reducers/actions';
 
 import MCQuestionChoice from './MCQuestionChoice.jsx';
 import QuestionButtons from './QuestionButtons.jsx';
@@ -14,7 +13,7 @@ export default class MCQuestion extends React.Component {
       answered:false,
     };
   }
-  componentWillUpdate(prevProps, prevState){
+  UNSAFE_componentWillUpdate(prevProps){
     if(prevProps.question !== this.props.question){
       this.setState({selected_choices_ids:[], answered:false});
     }
@@ -34,6 +33,7 @@ export default class MCQuestion extends React.Component {
     let nChoices = this.props.question.choices.length;
     let correctAnswers = 0;
     let incorrectAnswers = 0;
+    // eslint-disable-next-line no-unused-vars
     let blankAnswers = 0;
 
     for(let i = 0; i < nChoices; i++){

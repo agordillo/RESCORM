@@ -3,15 +3,15 @@ import * as Utils from '../vendors/Utils.js';
 function trackingReducer(state = {}, action){
   let newState;
   switch (action.type){
-  case 'ADD_OBJECTIVES':
+  case 'ADD_OBJECTIVES':{
     newState = JSON.parse(JSON.stringify(state));
     for(let i = 0; i < action.objectives.length; i++){
       if(typeof action.objectives[i].id !== "undefined"){
         newState.objectives[action.objectives[i].id] = action.objectives[i];
       }
     }
-    return newState;
-  case 'OBJECTIVE_ACCOMPLISHED':
+    return newState;}
+  case 'OBJECTIVE_ACCOMPLISHED':{
     if(typeof action.objective_id === "undefined"){
       return state; // Objective id not defined
     }
@@ -52,7 +52,8 @@ function trackingReducer(state = {}, action){
     }
 
     return newState;
-  case 'RESET_OBJECTIVES':
+  }
+  case 'RESET_OBJECTIVES':{
     newState = JSON.parse(JSON.stringify(state));
     newState.objectives = {};
     newState.progress_measure = 0;
@@ -63,13 +64,13 @@ function trackingReducer(state = {}, action){
       _objective = Utils.ResetObjective(_objective);
       newState.objectives[objectiveKeys[i]] = _objective;
     }
-    return newState;
-  case 'FINISH_APP':
+    return newState;}
+  case 'FINISH_APP':{
     newState = JSON.parse(JSON.stringify(state));
     if([true, false].indexOf(action.finished) !== -1){
       newState.finished = action.finished;
     }
-    return newState;
+    return newState;}
   default:
     return state;
   }

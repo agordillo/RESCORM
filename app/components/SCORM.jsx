@@ -29,7 +29,7 @@ export default class SCORM extends React.Component {
     window.removeEventListener("beforeunload", this.onUnload);
     window.removeEventListener("onload", this.onLoad);
   }
-  componentDidUpdate(prevProps, prevState){
+  UNSAFE_componentDidUpdate(prevProps){
     if(SCORM_WRAPPER.isConnected()){
       let updateProgress = (prevProps.tracking.progress_measure !== this.props.tracking.progress_measure);
       if(updateProgress){
@@ -44,7 +44,7 @@ export default class SCORM extends React.Component {
       }
     }
   }
-  onLoad(event){
+  onLoad(){
     let scorm = new SCORM_WRAPPER.init(this.props.config.debug_scorm_api, this.props.config.debug_scorm_api_window);
     if(!SCORM_WRAPPER.isConnected()){
       this.props.dispatch(scormConnected(false));
@@ -73,7 +73,7 @@ export default class SCORM extends React.Component {
       SCORM_WRAPPER.initScore();
     }
   }
-  onUnload(event){
+  onUnload(){
     if(SCORM_WRAPPER.isConnected()){
       SCORM_WRAPPER.onExit();
     }

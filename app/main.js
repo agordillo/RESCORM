@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReduxProvider from './components/ReduxProvider';
 
-const render = (Component) => {
+const render = () => {
   ReactDOM.render(
     <ReduxProvider/>,
-    document.getElementById('root'),
+    document.getElementById('root')
   );
 };
 

@@ -9,7 +9,6 @@ const config = {
   mode: 'development',
   entry: [
     'babel-polyfill',
-    'react-hot-loader/patch',
     'react',
     'react-dom',
     'webpack-dev-server/client?http://localhost:8080',
@@ -25,9 +24,6 @@ const config = {
   context: resolve(__dirname, 'app'),
 
   devServer: {
-    clientLogLevel: "none",
-    noInfo: true,
-    quiet: true,
     hot: true,
     contentBase: resolve(__dirname, 'app'),
     publicPath: '/'
@@ -38,7 +34,7 @@ const config = {
       {
         test: /\.(es6|jsx|js)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: ["react-hot-loader/webpack","babel-loader", "eslint-loader"]
       },
       {
         test: /\.css$/,

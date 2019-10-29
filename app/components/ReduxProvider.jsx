@@ -1,15 +1,11 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore, compose, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import {AppContainer} from 'react-hot-loader';
-
 import {GLOBAL_CONFIG} from '../config/config.js';
 import {INITIAL_STATE} from '../constants/constants';
 import GlobalState from './../reducers/reducers';
 import App from './App';
-
 export default class ReduxProvider extends React.Component {
   constructor(props){
     super(props);
@@ -38,13 +34,11 @@ export default class ReduxProvider extends React.Component {
   }
   render(){
     return (
-      <AppContainer>
-        <Provider store={this.store}>
-          <div style={{height:'100%'}}>
-            <App store={this.store}/>
-          </div>
-        </Provider>
-      </AppContainer>
+      <Provider store={this.store}>
+        <div style={{height:'100%'}}>
+          <App store={this.store}/>
+        </div>
+      </Provider>
     );
   }
 }

@@ -15,7 +15,7 @@ let LMS_CONFIG = {
   },
 };
 
-let processConfig = (function(){
+(function(){
   if((LMS_CONFIG.scorm2004) && (LMS_CONFIG.scorm2004.learner_preference)){
     if(LMS_CONFIG.scorm2004.learner_preference.difficulty === "random"){
       LMS_CONFIG.scorm2004.learner_preference.difficulty = parseInt(Math.random() * 10, 10).toString();

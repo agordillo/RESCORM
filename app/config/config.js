@@ -28,7 +28,7 @@ export let GLOBAL_CONFIG = {
   },
 };
 
-let processConfig = (function(){
+(function(){
   let env = process.env.NODE_ENV || 'dev';
   if(typeof GLOBAL_CONFIG[env] === "undefined"){
     env = "dev";

@@ -40,16 +40,16 @@ const config = {
 
   module: {
     rules: [
-       {
-        enforce: "pre",
-        test: /\.(es6|jsx|js)$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader"
-      }, 
+      //  {
+      //   enforce: "pre",
+      //   test: /\.(es6|jsx|js)$/,
+      //   exclude: /node_modules/,
+      //   loader: "eslint-loader"
+      // }, 
       {
         test: /\.(jsx|js|es6)?$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: ["babel-loader"]
 
       },
       {

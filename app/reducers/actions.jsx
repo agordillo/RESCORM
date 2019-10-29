@@ -19,7 +19,7 @@ export function addObjectives(objectives){
   };
 }
 
-export function resetObjectives(objectives){
+export function resetObjectives(){
   return {
     type:'RESET_OBJECTIVES',
   };
@@ -37,7 +37,7 @@ export function objectiveAccomplished(objectiveId, accomplishedScore = null){
 export function objectiveAccomplishedThunk(objectiveId, accomplishedScore = null){
   return (dispatch, getState) => {
     const firstState = JSON.parse(JSON.stringify(getState()));
-    dispatch(objectiveAccomplished(objectiveId, accomplishedScore = null));
+    dispatch(objectiveAccomplished(objectiveId, accomplishedScore));
 
     // Perform another action after accomplishing the objective
     const secondState = getState();
@@ -51,7 +51,7 @@ export function objectiveAccomplishedThunk(objectiveId, accomplishedScore = null
 }
 
 export function showDialog(text){
-  return (dispatch, getState) => {
+  return () => {
     alert(text);
   };
 }
