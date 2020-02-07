@@ -13,7 +13,7 @@ export default class MCQuestion extends React.Component {
       answered:false,
     };
   }
-  UNSAFE_componentWillUpdate(prevProps){
+  componentWillUpdate(prevProps){
     if(prevProps.question !== this.props.question){
       this.setState({selected_choices_ids:[], answered:false});
     }

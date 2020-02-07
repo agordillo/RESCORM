@@ -53,15 +53,15 @@ export function getUserProfile(){
 /*
 * ProgressMeasure should be a number on a [0,1] scale.
 */
-export function updateProgressMeasure(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD){
+export const updateProgressMeasure = function(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD){
   if(typeof progressMeasure == "number"){
     progressMeasure = Math.max(0,Math.min(1,progressMeasure));
     scorm.setvalue('cmi.progress_measure',progressMeasure.toString());
-    this.updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD);
+    _updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD,COMPLETION_ATTEMPT_THRESHOLD);
   }
 }
 
-export function updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD=0,COMPLETION_ATTEMPT_THRESHOLD=0){
+const _updateCompletionStatus = function(progressMeasure,COMPLETION_THRESHOLD=0,COMPLETION_ATTEMPT_THRESHOLD=0){
   if(typeof progressMeasure != "number"){
     progressMeasure = 0;
   }
@@ -75,20 +75,22 @@ export function updateCompletionStatus(progressMeasure,COMPLETION_THRESHOLD=0,CO
   }
   scorm.setvalue('cmi.completion_status',completionStatus);
 }
+export const updateCompletionStatus = _updateCompletionStatus;
+
 
  /*
   * Score should be a number on a [0,1] scale.
   */
-export function updateScore(score,SCORE_THRESHOLD){
+export const updateScore = function(score,SCORE_THRESHOLD){
   if(typeof score == "number"){
     score = Math.max(0,Math.min(1,score));
     scorm.setvalue('cmi.score.scaled',score.toString());
     scorm.setvalue('cmi.score.raw',(score*100).toString());
-    this.updateSuccessStatus(score,SCORE_THRESHOLD);
+    _updateSuccessStatus(score,SCORE_THRESHOLD);
   }
 }
 
-export function updateSuccessStatus(score,SCORE_THRESHOLD=0.5){
+const _updateSuccessStatus = function(score,SCORE_THRESHOLD=0.5){
   var successStatus;
   if(typeof score != "number"){
     successStatus = "unknown";
@@ -99,6 +101,7 @@ export function updateSuccessStatus(score,SCORE_THRESHOLD=0.5){
   }
   scorm.setvalue('cmi.success_status',successStatus);
 }
+export const updateSuccessStatus = _updateSuccessStatus;
 
 export function initScore(){
   scorm.setvalue('cmi.score.min',(0).toString());

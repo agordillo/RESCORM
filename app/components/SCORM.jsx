@@ -29,7 +29,7 @@ export default class SCORM extends React.Component {
     window.removeEventListener("beforeunload", this.onUnload);
     window.removeEventListener("onload", this.onLoad);
   }
-  UNSAFE_componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps){
     if(SCORM_WRAPPER.isConnected()){
       let updateProgress = (prevProps.tracking.progress_measure !== this.props.tracking.progress_measure);
       if(updateProgress){

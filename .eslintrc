@@ -44,6 +44,7 @@
         "use-isnan": 1,
         "valid-typeof": 1,
 
+
         /* Best Practices */
         "accessor-pairs": 0,
         "block-scoped-var": 0, // see Babel section
@@ -191,6 +192,7 @@
         "react/self-closing-comp": 1,
         "react/wrap-multilines": 0,
         "react/prop-types": 0,
+        "react/no-deprecated": 0,
         "react/prefer-es6-class": [1, "always"]
     }
 }
